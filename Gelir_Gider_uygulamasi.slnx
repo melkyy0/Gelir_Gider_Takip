@@ -1,0 +1,10 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="Gelir_Gider_uygulamasi.csproj">
+    <Platform Solution="*|x64" Project="x64" />
+    <Deploy Solution="Release|*" />
+  </Project>
+</Solution>

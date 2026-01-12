@@ -1,0 +1,93 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gelir_Gider_uygulamasi.MainPage">
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+
+            <Label Text="Gelir Gider Uygulamasına Hoş Geldin!"
+                   FontSize="24"
+                   HorizontalOptions="Center" />
+
+            <Picker x:Name="tursecim"
+                    Title="İşlem türünü seçiniz"
+                    SelectedIndexChanged="OnIslemSecildi">
+                <Picker.Items>
+                    <x:String>Gelir</x:String>
+                    <x:String>Gider</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <VerticalStackLayout x:Name="Gelirler" IsVisible="False" Spacing="10">
+                <Label Text="Gelir bilgisi ekleyin" FontAttributes="Bold" />
+                <Entry x:Name="Gelirad" Placeholder="Gelir adı giriniz. (Maaş, burs vb.)" ReturnType="Next"
+           Completed="OnGelirAdCompleted"/>
+                <Entry x:Name="Gelirtutar" Placeholder="Tutar giriniz" Keyboard="Numeric"
+                       ReturnType="Send" Completed="OnEkleClicked"/>
+                <Label Text="Tarih Seçiniz (Opsiyonel):" FontSize="12" />
+                
+                <DatePicker x:Name="GelirTarih" Format="dd.MM.yyyy" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout x:Name="Giderler" IsVisible="False" Spacing="10">
+                <Label Text="Gider bilgisi ekleyin" FontAttributes="Bold" />
+                <Entry x:Name="Giderad" Placeholder="Gider adı giriniz.Kira, fatura vb." ReturnType="Next"
+           Completed="OnGiderAdCompleted" />
+                <Entry x:Name="Gidertutar" Placeholder="Tutar giriniz" Keyboard="Numeric" ReturnType="Send" 
+           Completed="OnEkleClicked" />
+                <Label Text="Tarih Seçiniz (Opsiyonel):" FontSize="12" />
+                <DatePicker x:Name="GiderTarih" Format="dd.MM.yyyy" />
+            </VerticalStackLayout>
+
+            <Button Text="Ekle" Clicked="OnEkleClicked" BackgroundColor="DarkSlateGrey" TextColor="White" />
+            <Picker x:Name="FiltreSecim" Title="Zaman Seçin" 
+                     SelectedIndex ="0"
+                    SelectedIndexChanged="Filtrele">
+                <Picker.Items>
+                    <x:String>Hepsi</x:String>
+                    <x:String>Günlük</x:String>
+                    <x:String>Haftalık</x:String>
+                    <x:String>Aylık</x:String>
+                </Picker.Items>
+            </Picker>
+            
+            <Label x:Name="ToplamLabel" Text="Toplam: 0 TL" FontSize="20" HorizontalOptions="Center" />
+
+            <Label Text="Gelir Listesi" FontSize="18" FontAttributes="Bold" />
+            <CollectionView x:Name="GelirListesi" HeightRequest="150">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout Spacing="10" Padding="5">
+                        <Label Text="{Binding GorunumMetni}" TextColor="Green" Padding="5" />
+                        <Button Text="Sil" 
+                        Clicked="OnSilClicked" 
+                        CommandParameter="{Binding .}" 
+                        BackgroundColor="Red" 
+                        TextColor="White" 
+                        HeightRequest="40" />
+                            </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Text="Gider Listesi" FontSize="18" FontAttributes="Bold" />
+            <CollectionView x:Name="GiderListesi" HeightRequest="150">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout Spacing="10" Padding="5">
+                            <Label Text="{Binding GorunumMetni}" TextColor="Red" Padding="5" />
+                        <Button Text="Sil" 
+                        Clicked="OnSilClicked" 
+                        CommandParameter="{Binding .}" 
+                        BackgroundColor="Red" 
+                        TextColor="White" 
+                        HeightRequest="40" />
+                            </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+    
+    
