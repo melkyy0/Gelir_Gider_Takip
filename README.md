@@ -10,4 +10,5 @@ Dil: C#
 Platform: .NET MAUI (Android, Windows, iOS)
 Veri Formatı: JSON (System.Text.Json)
 Mantık: LINQ & ObservableCollection
-<img width="759" height="959" alt="image" src="https://github.com/user-attachments/assets/4051a1d4-ac9b-455d-96c6-63eb47d8bea8" />
+
+<img width="768" height="1088" alt="image" src="https://github.com/user-attachments/assets/7a625ad4-1bb0-42d4-8bfe-7a0582da28bc" />
